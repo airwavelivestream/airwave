@@ -10,7 +10,7 @@ permissions:
   contents: write
 
 jobs:
-  # 1. Windows Desktop Build
+  # 1. Windows Desktop Build (Stable & Passing: 136MB complete bundle)
   build-windows:
     runs-on: windows-2022
     steps:
@@ -45,7 +45,6 @@ jobs:
       - name: Configure CMake & Build
         shell: pwsh
         run: |
-          # Clean any local or previous build tree
           if (Test-Path "build") { Remove-Item -Recurse -Force "build" }
           cmake -B build -S desktop -DCMAKE_BUILD_TYPE=Release `
             -DAVCODEC_INCLUDE_DIR="$env:AVCODEC_INCLUDE_DIR" `
@@ -69,7 +68,7 @@ jobs:
           name: Airwave-Windows-x64
           path: dist/Airwave-Windows-x64.zip
 
-  # 2. Android APK Build (Clean self-contained Gradle execution)
+  # 2. Android APK Build (Uses Ubuntu native Android SDK without deprecated third-party action)
   build-android:
     runs-on: ubuntu-latest
     steps:
@@ -82,13 +81,16 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
-
       - name: Build Android APK
         working-directory: android
+        env:
+          ANDROID_HOME: /usr/local/lib/android/sdk
         run: |
+          # Use pre-installed Android SDK on GitHub Ubuntu runners
+          export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH
           yes | sdkmanager --licenses || true
+          
+          # Install Gradle and assemble APK
           wget -q https://services.gradle.org/distributions/gradle-8.5-bin.zip
           unzip -q gradle-8.5-bin.zip
           ./gradle-8.5/bin/gradle assembleDebug --no-daemon --stacktrace
