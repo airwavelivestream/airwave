@@ -10,7 +10,6 @@ set(CMAKE_AUTOUIC ON)
 
 find_package(Qt6 REQUIRED COMPONENTS Core Gui Qml Quick Network)
 
-find_package(PkgConfig QUIET)
 find_path(AVCODEC_INCLUDE_DIR libavcodec/avcodec.h)
 find_library(AVCODEC_LIBRARY avcodec)
 find_library(AVUTIL_LIBRARY avutil)
@@ -19,8 +18,12 @@ find_library(SWSCALE_LIBRARY swscale)
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/src
     ${CMAKE_CURRENT_SOURCE_DIR}/../shared/protocol
-    ${AVCODEC_INCLUDE_DIR}
 )
+
+if (AVCODEC_INCLUDE_DIR)
+    include_directories(${AVCODEC_INCLUDE_DIR})
+    add_compile_definitions(HAVE_FFMPEG=1)
+endif()
 
 set(SOURCES
     src/main.cpp
@@ -53,10 +56,11 @@ target_link_libraries(Airwave PRIVATE
     Qt6::Qml
     Qt6::Quick
     Qt6::Network
-    ${AVCODEC_LIBRARY}
-    ${AVUTIL_LIBRARY}
-    ${SWSCALE_LIBRARY}
 )
+
+if (AVCODEC_LIBRARY)
+    target_link_libraries(Airwave PRIVATE ${AVCODEC_LIBRARY} ${AVUTIL_LIBRARY} ${SWSCALE_LIBRARY})
+endif()
 
 if (WIN32)
     target_link_libraries(Airwave PRIVATE d3d11 dxgi)

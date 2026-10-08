@@ -10,7 +10,7 @@ permissions:
   contents: write
 
 jobs:
-  # 1. Windows Desktop Build (Qt 6.7 + MSVC + FFmpeg + windeployqt)
+  # 1. Windows Desktop Build
   build-windows:
     runs-on: windows-2022
     steps:
@@ -29,16 +29,34 @@ jobs:
           arch: 'win64_msvc2019_64'
           modules: 'qtmultimedia'
 
-      - name: Configure CMake & Build
-        shell: bash
+      - name: Install FFmpeg Dev Headers & Libs
+        shell: pwsh
         run: |
-          cmake -B build -S desktop -DCMAKE_BUILD_TYPE=Release
+          Invoke-WebRequest -Uri "https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl-shared.zip" -OutFile "ffmpeg.zip"
+          Expand-Archive ffmpeg.zip -DestinationPath "ffmpeg-dist"
+          $ffmpegRoot = (Get-ChildItem -Path "ffmpeg-dist" -Directory | Select-Object -First 1).FullName
+          echo "FFMPEG_ROOT=$ffmpegRoot" >> $env:GITHUB_ENV
+          echo "AVCODEC_INCLUDE_DIR=$ffmpegRoot/include" >> $env:GITHUB_ENV
+          echo "AVCODEC_LIBRARY=$ffmpegRoot/lib/avcodec.lib" >> $env:GITHUB_ENV
+          echo "AVUTIL_LIBRARY=$ffmpegRoot/lib/avutil.lib" >> $env:GITHUB_ENV
+          echo "SWSCALE_LIBRARY=$ffmpegRoot/lib/swscale.lib" >> $env:GITHUB_ENV
+          echo "$ffmpegRoot/bin" >> $env:GITHUB_PATH
+
+      - name: Configure CMake & Build
+        shell: pwsh
+        run: |
+          cmake -B build -S desktop -DCMAKE_BUILD_TYPE=Release `
+            -DAVCODEC_INCLUDE_DIR="$env:AVCODEC_INCLUDE_DIR" `
+            -DAVCODEC_LIBRARY="$env:AVCODEC_LIBRARY" `
+            -DAVUTIL_LIBRARY="$env:AVUTIL_LIBRARY" `
+            -DSWSCALE_LIBRARY="$env:SWSCALE_LIBRARY"
           cmake --build build --config Release
 
       - name: Package with windeployqt
         shell: pwsh
         run: |
           windeployqt --qmldir desktop/qml build/Release/Airwave.exe
+          Copy-Item "$env:FFMPEG_ROOT/bin/*.dll" "build/Release/" -Force
           New-Item -ItemType Directory -Path "dist/Airwave-Windows-x64" -Force
           Copy-Item -Path "build/Release/*" -Destination "dist/Airwave-Windows-x64" -Recurse -Force
           Compress-Archive -Path "dist/Airwave-Windows-x64/*" -DestinationPath "dist/Airwave-Windows-x64.zip"
@@ -49,7 +67,7 @@ jobs:
           name: Airwave-Windows-x64
           path: dist/Airwave-Windows-x64.zip
 
-  # 2. Android APK Build (Kotlin, Compose & MediaProjection)
+  # 2. Android APK Build
   build-android:
     runs-on: ubuntu-latest
     steps:
@@ -62,14 +80,18 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Make Gradle executable & Assemble APK
+      - name: Initialize Gradle Wrapper & Build APK
         working-directory: android
         run: |
-          chmod +x gradlew 2>/dev/null || true
-          gradle assembleRelease || gradle assembleDebug
+          gradle wrapper --gradle-version 8.7
+          chmod +x ./gradlew
+          ./gradlew assembleDebug
 
       - name: Upload Android APK
         uses: actions/upload-artifact@v4
@@ -110,10 +132,4 @@ jobs:
 
             ### 📦 Downloads:
             - **Windows PC**: `Airwave-Windows-x64.zip` (Extract & run `Airwave.exe`)
-            - **Android Phone**: `app-release.apk` (or `app-debug.apk`)
-            
-            ### 🚀 Quick Start:
-            1. Extract `Airwave.exe` (Click *More info* -> *Run anyway* if Windows SmartScreen displays).
-            2. Install the APK on your Android phone.
-            3. Plug USB cable -> Turn on **USB tethering** in Android Settings.
-            4. Tap **START CAST** for ultra-low latency (<16ms) gameplay!
+            - **Android Phone**: `app-debug.apk` / `app-release.apk`
