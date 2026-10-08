@@ -29,7 +29,7 @@ int main(int argc, char *argv[]) {
     engine.rootContext()->setContextProperty("receiver", receiver.get());
     engine.rootContext()->setContextProperty("latencyTracker", latencyTracker.get());
 
-    const QUrl url(u"qrc:/main.qml"_qs);
+    const QUrl url(u"qrc:/qml/main.qml"_qs);
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
                      &app, [url](QObject *obj, const QUrl &objUrl) {
         if (!obj && url == objUrl)

@@ -44,7 +44,7 @@ qt_add_resources(RESOURCES
     qml.qrc
 )
 
-add_executable(Airwave
+add_executable(Airwave WIN32
     ${SOURCES}
     ${HEADERS}
     ${RESOURCES}
