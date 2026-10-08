@@ -13,6 +13,7 @@ ApplicationWindow {
     minimumHeight: 600
     title: qsTr("Airwave - Your phone. Your big screen. Zero lag.")
     color: "#07080C"
+    icon.source: "qrc:/qml/assets/airwave_logo.svg"
 
     property bool isStageActive: false
     property bool isFullscreen: false
@@ -55,20 +56,14 @@ ApplicationWindow {
             // Brand Header
             RowLayout {
                 spacing: 16
-                Rectangle {
-                    width: 44
-                    height: 44
-                    radius: 12
-                    color: "#11131A"
-                    border.color: "#19E3FF"
-                    border.width: 1
-                    Text {
-                        anchors.centerIn: parent
-                        text: "AW"
-                        color: "#19E3FF"
-                        font.bold: true
-                        font.pixelSize: 16
-                    }
+                Image {
+                    width: 48
+                    height: 48
+                    source: "qrc:/qml/assets/airwave_logo.svg"
+                    sourceSize.width: 48
+                    sourceSize.height: 48
+                    fillMode: Image.PreserveAspectFit
+                    smooth: true
                 }
                 Column {
                     Text {

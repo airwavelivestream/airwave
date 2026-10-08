@@ -108,9 +108,16 @@ fun AirwaveMainScreen(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.SpaceBetween
         ) {
-            // Header
+            // Header with Official Logo
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Spacer(modifier = Modifier.height(24.dp))
+                androidx.compose.material3.Icon(
+                    painter = androidx.compose.ui.res.painterResource(id = com.airwave.cast.R.drawable.ic_launcher_foreground),
+                    contentDescription = "Airwave Logo",
+                    modifier = Modifier.size(72.dp),
+                    tint = Color.Unspecified
+                )
+                Spacer(modifier = Modifier.height(8.dp))
                 Text(
                     text = "AIRWAVE",
                     fontSize = 28.sp,
@@ -119,7 +126,7 @@ fun AirwaveMainScreen(
                     letterSpacing = 2.sp
                 )
                 Text(
-                    text = "Zero Lag Mobile Game Mirror",
+                    text = "Zero-Lag Mobile Game Mirror",
                     fontSize = 13.sp,
                     color = Color(0xFF8E929E)
                 )

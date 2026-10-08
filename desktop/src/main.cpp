@@ -14,6 +14,7 @@ int main(int argc, char *argv[]) {
     QGuiApplication app(argc, argv);
     app.setApplicationName("Airwave");
     app.setOrganizationName("Airwave");
+    app.setWindowIcon(QIcon(":/qml/assets/airwave_logo.svg"));
 
     QQuickStyle::setStyle("Basic");
 

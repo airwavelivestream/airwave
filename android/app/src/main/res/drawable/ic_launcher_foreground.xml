@@ -1,25 +1,45 @@
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="108dp"
     android:height="108dp"
-    android:viewportWidth="108"
-    android:viewportHeight="108">
-    <!-- Airwave Radar Waves Icon -->
+    android:viewportWidth="512"
+    android:viewportHeight="512">
+
+    <!-- Outer Wave Ring Arc -->
     <path
-        android:strokeColor="#00E5FF"
-        android:strokeWidth="4"
+        android:strokeColor="#7C5CFF"
+        android:strokeWidth="24"
         android:strokeLineCap="round"
-        android:pathData="M 38,54 A 16,16 0 0,1 70,54" />
+        android:pathData="M 120,180 A 160,160 0 0,1 392,180" />
     <path
-        android:strokeColor="#00E5FF"
-        android:strokeWidth="4"
+        android:strokeColor="#7C5CFF"
+        android:strokeWidth="24"
         android:strokeLineCap="round"
-        android:pathData="M 28,54 A 26,26 0 0,1 80,54" />
+        android:strokeAlpha="0.7"
+        android:pathData="M 392,332 A 160,160 0 0,1 120,332" />
+
+    <!-- Middle Wave Ring Arc -->
     <path
-        android:strokeColor="#00E5FF"
-        android:strokeWidth="4"
+        android:strokeColor="#19E3FF"
+        android:strokeWidth="20"
         android:strokeLineCap="round"
-        android:pathData="M 18,54 A 36,36 0 0,1 90,54" />
+        android:pathData="M 160,215 A 110,110 0 0,1 352,215" />
     <path
-        android:fillColor="#00E5FF"
-        android:pathData="M 54,64 A 6,6 0 1,1 54,52 A 6,6 0 1,1 54,64" />
+        android:strokeColor="#19E3FF"
+        android:strokeWidth="20"
+        android:strokeLineCap="round"
+        android:strokeAlpha="0.85"
+        android:pathData="M 352,297 A 110,110 0 0,1 160,297" />
+
+    <!-- Inner Core Wave Arc -->
+    <path
+        android:strokeColor="#B6FF3B"
+        android:strokeWidth="16"
+        android:strokeLineCap="round"
+        android:pathData="M 205,240 A 55,55 0 0,1 307,240" />
+
+    <!-- Core Focal Dot -->
+    <path
+        android:fillColor="#B6FF3B"
+        android:pathData="M 256,261 A 14,14 0 1,0 256,289 A 14,14 0 1,0 256,261 Z" />
+
 </vector>
