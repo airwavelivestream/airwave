@@ -1,0 +1,28 @@
+# Build directories
+build/
+bin/
+dist/
+*.obj
+*.exe
+*.dll
+*.lib
+*.log
+
+# CMake artifacts
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+
+# Android build outputs
+.gradle/
+android/.gradle/
+android/app/build/
+*.apk
+*.aab
+
+# IDE & OS files
+.idea/
+.vscode/
+*.user
+Thumbs.db
+.DS_Store

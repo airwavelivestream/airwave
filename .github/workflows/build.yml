@@ -45,6 +45,8 @@ jobs:
       - name: Configure CMake & Build
         shell: pwsh
         run: |
+          # Clean any local or previous build tree
+          if (Test-Path "build") { Remove-Item -Recurse -Force "build" }
           cmake -B build -S desktop -DCMAKE_BUILD_TYPE=Release `
             -DAVCODEC_INCLUDE_DIR="$env:AVCODEC_INCLUDE_DIR" `
             -DAVCODEC_LIBRARY="$env:AVCODEC_LIBRARY" `
@@ -67,7 +69,7 @@ jobs:
           name: Airwave-Windows-x64
           path: dist/Airwave-Windows-x64.zip
 
-  # 2. Android APK Build (Using standard Gradle action with clean caching)
+  # 2. Android APK Build (Clean self-contained Gradle execution)
   build-android:
     runs-on: ubuntu-latest
     steps:
@@ -83,18 +85,13 @@ jobs:
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Accept Android Licenses
-        run: yes | sdkmanager --licenses || true
-
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3
-        with:
-          cache-disabled: true
-
       - name: Build Android APK
         working-directory: android
         run: |
-          gradle assembleDebug --no-daemon --stacktrace
+          yes | sdkmanager --licenses || true
+          wget -q https://services.gradle.org/distributions/gradle-8.5-bin.zip
+          unzip -q gradle-8.5-bin.zip
+          ./gradle-8.5/bin/gradle assembleDebug --no-daemon --stacktrace
 
       - name: Upload Android APK
         uses: actions/upload-artifact@v4
