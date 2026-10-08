@@ -60,6 +60,9 @@ jobs:
         run: |
           windeployqt --qmldir desktop/qml build/Release/Airwave.exe
           Copy-Item "$env:FFMPEG_ROOT/bin/*.dll" "build/Release/" -Force
+          # Copy QML directory alongside binary so engine can always locate main.qml and components
+          New-Item -ItemType Directory -Path "build/Release/qml" -Force
+          Copy-Item -Path "desktop/qml/*" -Destination "build/Release/qml/" -Recurse -Force
           New-Item -ItemType Directory -Path "dist/Airwave-Windows-x64" -Force
           Copy-Item -Path "build/Release/*" -Destination "dist/Airwave-Windows-x64" -Recurse -Force
 
