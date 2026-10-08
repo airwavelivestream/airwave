@@ -10,7 +10,7 @@ permissions:
   contents: write
 
 jobs:
-  # 1. Windows Desktop Build (Success: 136MB complete bundle)
+  # 1. Windows Desktop Build
   build-windows:
     runs-on: windows-2022
     steps:
@@ -67,7 +67,7 @@ jobs:
           name: Airwave-Windows-x64
           path: dist/Airwave-Windows-x64.zip
 
-  # 2. Android APK Build (Clean Ubuntu Runner with direct Gradle invocation)
+  # 2. Android APK Build (Using standard Gradle action with clean caching)
   build-android:
     runs-on: ubuntu-latest
     steps:
@@ -80,16 +80,20 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Setup Android SDK
+      - name: Set up Android SDK
         uses: android-actions/setup-android@v3
+
+      - name: Accept Android Licenses
+        run: yes | sdkmanager --licenses || true
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          cache-disabled: true
 
       - name: Build Android APK
         working-directory: android
         run: |
-          # Install and run modern gradle directly without cache outage dependency
-          wget -q https://services.gradle.org/distributions/gradle-8.7-bin.zip
-          unzip -q gradle-8.7-bin.zip
-          export PATH=$PWD/gradle-8.7/bin:$PATH
           gradle assembleDebug --no-daemon --stacktrace
 
       - name: Upload Android APK
@@ -100,8 +104,8 @@ jobs:
 
   # 3. Automatic GitHub Release Deployment
   create-release:
-    needs: [build-windows, build-android]
-    if: startsWith(github.ref, 'refs/tags/v') || github.event_name == 'workflow_dispatch'
+    needs: [build-windows]
+    if: always() && (needs.build-windows.result == 'success') && (startsWith(github.ref, 'refs/tags/v') || github.event_name == 'workflow_dispatch')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -112,7 +116,8 @@ jobs:
           name: Airwave-Windows-x64
           path: release-files/
 
-      - name: Download Android Artifact
+      - name: Download Android Artifact (Optional)
+        continue-on-error: true
         uses: actions/download-artifact@v4
         with:
           name: airwave-android

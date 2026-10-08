@@ -1,0 +1,43 @@
+2026-10-08 14:53:51,203 - aqt.main - INFO - installer 10860 aqtinstall(aqt) v3.3.0 on Python 3.14.7 [CPython MSC v.1944 64 bit (AMD64)]
+2026-10-08 14:53:51,204 - aqt.helper - DEBUG - helper 10860 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt6_672/Updates.xml.sha256
+2026-10-08 14:53:54,030 - aqt.helper - DEBUG - helper 3832 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt6_672/qt.qt6.672.win64_msvc2019_64/6.7.2-0-202406110335qtbase-Windows-Windows_10_22H2-MSVC2019-Windows-Windows_10_22H2-X86_64.7z.sha256
+2026-10-08 14:53:54,034 - aqt.helper - DEBUG - helper 4624 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt6_672/qt.qt6.672.win64_msvc2019_64/6.7.2-0-202406110335qtsvg-Windows-Windows_10_22H2-MSVC2019-Windows-Windows_10_22H2-X86_64.7z.sha256
+2026-10-08 14:53:54,047 - aqt.helper - DEBUG - helper 10612 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt6_672/qt.qt6.672.win64_msvc2019_64/6.7.2-0-202406110335qtdeclarative-Windows-Windows_10_22H2-MSVC2019-Windows-Windows_10_22H2-X86_64.7z.sha256
+2026-10-08 14:53:54,061 - aqt.helper - DEBUG - helper 24876 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt6_672/qt.qt6.672.win64_msvc2019_64/6.7.2-0-202406110335qttools-Windows-Windows_10_22H2-MSVC2019-Windows-Windows_10_22H2-X86_64.7z.sha256
+2026-10-08 14:53:54,844 - aqt.helper - INFO - helper 10612 Downloading qtdeclarative...
+2026-10-08 14:53:54,845 - aqt.helper - INFO - helper 3832 Downloading qtbase...
+2026-10-08 14:53:54,854 - aqt.helper - INFO - helper 4624 Downloading qtsvg...
+2026-10-08 14:53:54,845 - aqt.installer - DEBUG - installer 10612 Download URL: https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt6_672/qt.qt6.672.win64_msvc2019_64/6.7.2-0-202406110335qtdeclarative-Windows-Windows_10_22H2-MSVC2019-Windows-Windows_10_22H2-X86_64.7z
+2026-10-08 14:53:54,845 - aqt.installer - DEBUG - installer 3832 Download URL: https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt6_672/qt.qt6.672.win64_msvc2019_64/6.7.2-0-202406110335qtbase-Windows-Windows_10_22H2-MSVC2019-Windows-Windows_10_22H2-X86_64.7z
+2026-10-08 14:53:54,854 - aqt.installer - DEBUG - installer 4624 Download URL: https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt6_672/qt.qt6.672.win64_msvc2019_64/6.7.2-0-202406110335qtsvg-Windows-Windows_10_22H2-MSVC2019-Windows-Windows_10_22H2-X86_64.7z
+2026-10-08 14:53:54,857 - aqt.helper - INFO - helper 24876 Downloading qttools...
+2026-10-08 14:53:54,858 - aqt.installer - DEBUG - installer 24876 Download URL: https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt6_672/qt.qt6.672.win64_msvc2019_64/6.7.2-0-202406110335qttools-Windows-Windows_10_22H2-MSVC2019-Windows-Windows_10_22H2-X86_64.7z
+2026-10-08 14:53:55,663 - aqt.helper - DEBUG - helper 4624 Asked to redirect(302) to: https://mirror.maeen.sa/qtproject/online/qtsdkrepository/windows_x86/desktop/qt6_672/qt.qt6.672.win64_msvc2019_64/6.7.2-0-202406110335qtsvg-Windows-Windows_10_22H2-MSVC2019-Windows-Windows_10_22H2-X86_64.7z
+2026-10-08 14:53:55,664 - aqt.helper - INFO - helper 4624 Redirected: mirror.maeen.sa
+2026-10-08 14:53:55,673 - aqt.helper - DEBUG - helper 3832 Asked to redirect(302) to: https://mirror.maeen.sa/qtproject/online/qtsdkrepository/windows_x86/desktop/qt6_672/qt.qt6.672.win64_msvc2019_64/6.7.2-0-202406110335qtbase-Windows-Windows_10_22H2-MSVC2019-Windows-Windows_10_22H2-X86_64.7z
+2026-10-08 14:53:55,673 - aqt.helper - INFO - helper 3832 Redirected: mirror.maeen.sa
+2026-10-08 14:53:55,685 - aqt.helper - DEBUG - helper 10612 Asked to redirect(302) to: https://mirror.maeen.sa/qtproject/online/qtsdkrepository/windows_x86/desktop/qt6_672/qt.qt6.672.win64_msvc2019_64/6.7.2-0-202406110335qtdeclarative-Windows-Windows_10_22H2-MSVC2019-Windows-Windows_10_22H2-X86_64.7z
+2026-10-08 14:53:55,686 - aqt.helper - INFO - helper 10612 Redirected: mirror.maeen.sa
+2026-10-08 14:53:55,763 - aqt.helper - DEBUG - helper 24876 Asked to redirect(302) to: https://mirror.maeen.sa/qtproject/online/qtsdkrepository/windows_x86/desktop/qt6_672/qt.qt6.672.win64_msvc2019_64/6.7.2-0-202406110335qttools-Windows-Windows_10_22H2-MSVC2019-Windows-Windows_10_22H2-X86_64.7z
+2026-10-08 14:53:55,763 - aqt.helper - INFO - helper 24876 Redirected: mirror.maeen.sa
+2026-10-08 14:53:57,629 - aqt.installer - INFO - installer 4624 Finished installation of qtsvg-Windows-Windows_10_22H2-MSVC2019-Windows-Windows_10_22H2-X86_64.7z in 3.59624880
+2026-10-08 14:53:57,645 - aqt.helper - DEBUG - helper 4624 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt6_672/qt.qt6.672.win64_msvc2019_64/6.7.2-0-202406110335qttranslations-Windows-Windows_10_22H2-MSVC2019-Windows-Windows_10_22H2-X86_64.7z.sha256
+2026-10-08 14:53:58,493 - aqt.helper - INFO - helper 4624 Downloading qttranslations...
+2026-10-08 14:53:58,494 - aqt.installer - DEBUG - installer 4624 Download URL: https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt6_672/qt.qt6.672.win64_msvc2019_64/6.7.2-0-202406110335qttranslations-Windows-Windows_10_22H2-MSVC2019-Windows-Windows_10_22H2-X86_64.7z
+2026-10-08 14:53:59,292 - aqt.helper - DEBUG - helper 4624 Asked to redirect(302) to: https://mirror.maeen.sa/qtproject/online/qtsdkrepository/windows_x86/desktop/qt6_672/qt.qt6.672.win64_msvc2019_64/6.7.2-0-202406110335qttranslations-Windows-Windows_10_22H2-MSVC2019-Windows-Windows_10_22H2-X86_64.7z
+2026-10-08 14:53:59,293 - aqt.helper - INFO - helper 4624 Redirected: mirror.maeen.sa
+2026-10-08 14:54:03,701 - aqt.installer - INFO - installer 4624 Finished installation of qttranslations-Windows-Windows_10_22H2-MSVC2019-Windows-Windows_10_22H2-X86_64.7z in 6.05864070
+2026-10-08 14:54:03,719 - aqt.helper - DEBUG - helper 4624 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt6_672/qt.qt6.672.win64_msvc2019_64/6.7.2-0-202406110335d3dcompiler_47-x64.7z.sha256
+2026-10-08 14:54:04,793 - aqt.helper - INFO - helper 4624 Downloading d3dcompiler_47...
+2026-10-08 14:54:04,794 - aqt.installer - DEBUG - installer 4624 Download URL: https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt6_672/qt.qt6.672.win64_msvc2019_64/6.7.2-0-202406110335d3dcompiler_47-x64.7z
+2026-10-08 14:54:05,652 - aqt.helper - DEBUG - helper 4624 Asked to redirect(302) to: https://mirror.maeen.sa/qtproject/online/qtsdkrepository/windows_x86/desktop/qt6_672/qt.qt6.672.win64_msvc2019_64/6.7.2-0-202406110335d3dcompiler_47-x64.7z
+2026-10-08 14:54:05,652 - aqt.helper - INFO - helper 4624 Redirected: mirror.maeen.sa
+2026-10-08 14:54:07,394 - aqt.installer - INFO - installer 4624 Finished installation of d3dcompiler_47-x64.7z in 3.67710950
+2026-10-08 14:54:07,407 - aqt.helper - DEBUG - helper 4624 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt6_672/qt.qt6.672.win64_msvc2019_64/6.7.2-0-202406110335opengl32sw-64-mesa_11_2_2-signed_sha256.7z.sha256
+2026-10-08 14:54:08,193 - aqt.helper - INFO - helper 4624 Downloading opengl32sw...
+2026-10-08 14:54:08,194 - aqt.installer - DEBUG - installer 4624 Download URL: https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt6_672/qt.qt6.672.win64_msvc2019_64/6.7.2-0-202406110335opengl32sw-64-mesa_11_2_2-signed_sha256.7z
+2026-10-08 14:54:09,095 - aqt.helper - DEBUG - helper 4624 Asked to redirect(302) to: https://mirror.maeen.sa/qtproject/online/qtsdkrepository/windows_x86/desktop/qt6_672/qt.qt6.672.win64_msvc2019_64/6.7.2-0-202406110335opengl32sw-64-mesa_11_2_2-signed_sha256.7z
+2026-10-08 14:54:09,095 - aqt.helper - INFO - helper 4624 Redirected: mirror.maeen.sa
+2026-10-08 14:54:12,041 - aqt.installer - INFO - installer 4624 Finished installation of opengl32sw-64-mesa_11_2_2-signed_sha256.7z in 4.63676450
+2026-10-08 14:54:15,569 - aqt.installer - INFO - installer 24876 Finished installation of qttools-Windows-Windows_10_22H2-MSVC2019-Windows-Windows_10_22H2-X86_64.7z in 21.50933860
+2026-10-08 14:55:11,892 - aqt.installer - INFO - installer 3832 Finished installation of qtbase-Windows-Windows_10_22H2-MSVC2019-Windows-Windows_10_22H2-X86_64.7z in 77.86435490
