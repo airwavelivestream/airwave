@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/main.qml</file>
+        <file>qml/theme/Theme.qml</file>
+        <file>qml/components/DeviceRadarCard.qml</file>
+        <file>qml/components/StageControlRail.qml</file>
+        <file>qml/components/WaveformVisualizer.qml</file>
+    </qresource>
+</RCC>

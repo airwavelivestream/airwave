@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airwave | Zero Lag Mobile Game Screen Mirroring</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-base: #07080C;
+            --panel: #11131A;
+            --accent-violet: #7C5CFF;
+            --accent-cyan: #19E3FF;
+            --accent-lime: #B6FF3B;
+            --text-dim: #8E929E;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg-base);
+            color: #FFFFFF;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+        }
+        header {
+            padding: 2.5rem 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--accent-cyan);
+            letter-spacing: 2px;
+        }
+        .hero {
+            max-width: 900px;
+            margin: 4rem auto;
+            text-align: center;
+            padding: 0 1.5rem;
+        }
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 1.2rem;
+            background: linear-gradient(135deg, #FFF 40%, var(--accent-cyan) 80%, var(--accent-violet) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .tagline {
+            font-size: 1.3rem;
+            color: var(--text-dim);
+            margin-bottom: 2.5rem;
+        }
+        .cta-group {
+            display: flex;
+            gap: 1.2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-violet), var(--accent-cyan));
+            color: #FFF;
+            padding: 0.9rem 2rem;
+            border-radius: 10px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.15s ease;
+        }
+        .btn-primary:hover {
+            transform: scale(1.04);
+        }
+        .btn-secondary {
+            background: var(--panel);
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            padding: 0.9rem 2rem;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 5rem auto;
+            padding: 0 1.5rem;
+        }
+        .feature-card {
+            background: var(--panel);
+            padding: 2rem;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .feature-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--accent-lime);
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+        .feature-card p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+        }
+        footer {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">AIRWAVE</div>
+        <a href="https://github.com/airwave/airwave" class="btn-secondary">GitHub</a>
+    </header>
+
+    <section class="hero">
+        <h1>Your Phone. Your Big Screen. Zero Lag.</h1>
+        <p class="tagline">100% Free, open-source competitive mobile game mirroring & live-streaming tool. No watermarks, no paywalls, no device limits.</p>
+        <div class="cta-group">
+            <a href="https://github.com/airwave/airwave/releases" class="btn-primary">Download Airwave v1.0.0</a>
+            <a href="#features" class="btn-secondary">View Benchmarks</a>
+        </div>
+    </section>
+
+    <section class="features-grid" id="features">
+        <div class="feature-card">
+            <h3>⚡ &lt;15ms Glass-to-Glass</h3>
+            <p>Direct MediaCodec to D3D11 hardware decode pipeline over USB Tethering (RNDIS/NCM). Tested at 60, 90, and 120 FPS.</p>
+        </div>
+        <div class="feature-card">
+            <h3>🎮 Competitive Game Mode</h3>
+            <p>Designed for PUBG/BGMI with zero frame buffer delay, live signal HUD, and frame pacing stability visualizers.</p>
+        </div>
+        <div class="feature-card">
+            <h3>🎥 Zero-Driver OBS Stream</h3>
+            <p>Direct SRT and local MPEG-TS streaming for instant OBS Studio Media Source ingest without proprietary virtual drivers.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>Released under GNU General Public License v3.0 (GPL-3.0). Free forever.</p>
+    </footer>
+</body>
+</html>

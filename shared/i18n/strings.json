@@ -1,0 +1,41 @@
+{
+  "en": {
+    "app_title": "Airwave - Zero Lag Mobile Game Mirror",
+    "tagline": "Your phone. Your big screen. Zero lag.",
+    "start_cast": "START CASTING",
+    "stop_cast": "STOP CAST",
+    "radar_title": "AIRWAVE RADAR",
+    "radar_subtitle": "Searching for mobile gaming devices over USB tethering and 5GHz Wi-Fi...",
+    "wired_mode": "USB 3.0 Tethered",
+    "wireless_mode": "5GHz Wi-Fi",
+    "latency": "LATENCY",
+    "framerate": "FRAMERATE",
+    "packet_loss": "PACKET LOSS"
+  },
+  "hi": {
+    "app_title": "एयरवेव - शून्य लैग मोबाइल गेम मिरर",
+    "tagline": "आपका फ़ोन। आपकी बड़ी स्क्रीन। शून्य लैग।",
+    "start_cast": "कास्ट शुरू करें",
+    "stop_cast": "कास्ट रोकें",
+    "radar_title": "एयरवेव रडार",
+    "radar_subtitle": "USB टेदरिंग और 5GHz वाई-फ़ाई पर गेमिंग डिवाइस खोज रहे हैं...",
+    "wired_mode": "USB 3.0 टेदर किया हुआ",
+    "wireless_mode": "5GHz वाई-फ़ाई",
+    "latency": "विलंबता (Latency)",
+    "framerate": "फ़्रेम दर (FPS)",
+    "packet_loss": "पैकेट क्षति"
+  },
+  "kn": {
+    "app_title": "ಏರ್‌ವೇವ್ - ಝೀರೋ ಲ್ಯಾಗ್ ಮೊಬೈಲ್ ಗೇಮ್ ಮಿರರ್",
+    "tagline": "ನಿಮ್ಮ ಫೋನ್. ನಿಮ್ಮ ದೊಡ್ಡ ಪರದೆ. ಶೂನ್ಯ ಲ್ಯಾಗ್.",
+    "start_cast": "ಕಾಸ್ಟಿಂಗ್ ಪ್ರಾರಂಭಿಸಿ",
+    "stop_cast": "ಕಾಸ್ಟ್ ನಿಲ್ಲಿಸಿ",
+    "radar_title": "ಏರ್‌ವೇವ್ ರಡಾರ್",
+    "radar_subtitle": "USB ಟೆಥರಿಂಗ್ ಮತ್ತು 5GHz ವೈ-ಫೈ ಮೂಲಕ ಗೇಮಿಂಗ್ ಸಾಧನಗಳನ್ನು ಹುಡುಕಲಾಗುತ್ತಿದೆ...",
+    "wired_mode": "USB 3.0 ಟೆಥರ್ಡ್",
+    "wireless_mode": "5GHz ವೈ-ಫೈ",
+    "latency": "ವಿಳಂಬತೆ (Latency)",
+    "framerate": "ಫ್ರೇಮ್ ದರ (FPS)",
+    "packet_loss": "ಪ್ಯಾಕೆಟ್ ನಷ್ಟ"
+  }
+}
