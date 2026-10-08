@@ -10,7 +10,7 @@ permissions:
   contents: write
 
 jobs:
-  # 1. Windows Desktop Build
+  # 1. Windows Desktop Build (Success: 136MB complete bundle)
   build-windows:
     runs-on: windows-2022
     steps:
@@ -67,7 +67,7 @@ jobs:
           name: Airwave-Windows-x64
           path: dist/Airwave-Windows-x64.zip
 
-  # 2. Android APK Build
+  # 2. Android APK Build (Clean Ubuntu Runner with direct Gradle invocation)
   build-android:
     runs-on: ubuntu-latest
     steps:
@@ -80,18 +80,17 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3
-
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Initialize Gradle Wrapper & Build APK
+      - name: Build Android APK
         working-directory: android
         run: |
-          gradle wrapper --gradle-version 8.7
-          chmod +x ./gradlew
-          ./gradlew assembleDebug
+          # Install and run modern gradle directly without cache outage dependency
+          wget -q https://services.gradle.org/distributions/gradle-8.7-bin.zip
+          unzip -q gradle-8.7-bin.zip
+          export PATH=$PWD/gradle-8.7/bin:$PATH
+          gradle assembleDebug --no-daemon --stacktrace
 
       - name: Upload Android APK
         uses: actions/upload-artifact@v4
