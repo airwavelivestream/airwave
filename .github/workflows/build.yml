@@ -28,6 +28,7 @@ jobs:
           target: 'desktop'
           arch: 'win64_msvc2019_64'
           modules: 'qtmultimedia'
+          mirror: 'https://download.qt.io'
 
       - name: Install FFmpeg Dev Headers & Libs
         shell: pwsh
@@ -103,7 +104,7 @@ jobs:
 
   # 3. Automatic GitHub Release Deployment
   create-release:
-    needs: [build-windows]
+    needs: [build-windows, build-android]
     if: always() && (needs.build-windows.result == 'success') && (startsWith(github.ref, 'refs/tags/v') || github.event_name == 'workflow_dispatch')
     runs-on: ubuntu-latest
     steps:
