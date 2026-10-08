@@ -54,21 +54,19 @@ jobs:
             -DSWSCALE_LIBRARY="$env:SWSCALE_LIBRARY"
           cmake --build build --config Release
 
-      - name: Package Standalone Windows Installer
+      - name: Stage Windows Distribution Files
         shell: pwsh
         run: |
           windeployqt --qmldir desktop/qml build/Release/Airwave.exe
           Copy-Item "$env:FFMPEG_ROOT/bin/*.dll" "build/Release/" -Force
           New-Item -ItemType Directory -Path "dist/Airwave-Windows-x64" -Force
           Copy-Item -Path "build/Release/*" -Destination "dist/Airwave-Windows-x64" -Recurse -Force
-          
-          # Create Single Portable Executable / Installer using 7-Zip SFX
-          $version = if ($env:GITHUB_REF -match 'refs/tags/v(.*)') { $matches[1] } else { '1.0.0' }
-          $exeName = "Airwave-v${version}-Setup.exe"
-          
-          # Use 7z to create self-extracting single exe installer
-          & "7z" a -sfx7z.sfx "dist/$exeName" "./dist/Airwave-Windows-x64/*"
-          echo "RELEASE_EXE_NAME=$exeName" >> $env:GITHUB_ENV
+
+      - name: Build Single Standalone Installer (.exe)
+        uses: Minionguyjpro/Inno-Setup-Action@v1.2.2
+        with:
+          path: installer.iss
+          options: /DMyAppVersion=1.0.0
 
       - name: Upload Windows Standalone Executable
         uses: actions/upload-artifact@v4
